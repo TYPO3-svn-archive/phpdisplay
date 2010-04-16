@@ -1,0 +1,5 @@
+plugin.tx_phpdisplay {
+	defaultRendering {
+		richtext.parseFunc < lib.parseFunc_RTE
+	}
+}

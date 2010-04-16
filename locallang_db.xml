@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'phpdisplay'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_phpdisplay_displays">Template-based Display</label>
+			<label index="tx_phpdisplay_displays.title">Title</label>
+			<label index="tx_phpdisplay_displays.description">Description</label>
+			<label index="tx_phpdisplay_displays.mappings">Mappings</label>
+			<label index="tx_phpdisplay_displays.template">Template path</label>
+			<label index="tx_phpdisplay_displays.noTemplateFoundError"><![CDATA[
+Change this content by clicking on tab "HTML". 
+
+Then, you can:
+
+- insert inline HTML
+- load a file, FILE:fileadmin/templates/plugins/tesseract/news/list_of_news.html
+                                                                               
+]]>
+			</label>
+			<label index="tx_phpdisplay_displays.text">Text</label>
+			<label index="tx_phpdisplay_displays.richtext">Rich text (HTML)</label>
+			<label index="tx_phpdisplay_displays.image">Image</label>
+			<label index="tx_phpdisplay_displays.image_resource">Image Resource</label>
+			<label index="tx_phpdisplay_displays.link_to_detail">URL to detail</label>
+			<label index="tx_phpdisplay_displays.link_to_page">URL to page</label>
+			<label index="tx_phpdisplay_displays.link_to_file">URL to file</label>
+			<label index="tx_phpdisplay_displays.user">User Function</label>
+			<label index="tx_phpdisplay_displays.debug">Debug (extension develog must be installed)</label>
+			<label index="tx_phpdisplay_displays.debug_markers">Debug markers</label>
+			<label index="tx_phpdisplay_displays.debug_template_structure">Debug template structure</label>
+			<label index="tx_phpdisplay_displays.debug_data_structure">Debug data structure</label>
+			<label index="tx_phpdisplay_displays.email">Email</label>
+			<label index="tx_phpdisplay_displays.showJson">Show JSON</label>
+			<label index="tx_phpdisplay_displays.editJson">Edit JSON</label>
+			<label index="tx_phpdisplay_displays.editHtml">HTML</label>
+			<label index="tx_phpdisplay_displays.mapping">Mapping</label>
+			<label index="tx_phpdisplay_displays.fields">Fields</label>
+			<label index="tx_phpdisplay_displays.types">Types</label>
+			<label index="tx_phpdisplay_displays.configuration">Typoscript configuration</label>
+			<label index="tx_phpdisplay_displays.insertDefaultConfiguration">Insert default configuration</label>
+			<label index="tx_phpdisplay_displays.saveFieldConfiguration">Save field configuration</label>
+			<label index="tx_phpdisplay_displays.pagebrowser">Page Browser Config</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_tpl">Template path</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_showmore">Show more pages</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_showless">Show less pages</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_pagesbefore"># pages before</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_pagesafter"># pages after</label>
+			<label index="tx_phpdisplay_displays.fileNotFound">File not found at</label>
+			<label index="tx_phpdisplay_displays.imported">imported</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="tx_phpdisplay_displays">Afficheur de données (modèle HTML)</label>
+			<label index="tx_phpdisplay_displays.title">Nom</label>
+			<label index="tx_phpdisplay_displays.description">Description</label>
+			<label index="tx_phpdisplay_displays.mappings">Corrélations</label>
+			<label index="tx_phpdisplay_displays.template">Modèle HTML</label>
+			<label index="tx_phpdisplay_displays.noTemplateFoundError"><![CDATA[
+Pour changer ce contenu, cliquez sur l'onglet "HTML".
+
+- Insérer du contenu HTML inline
+- Charger un fichier avec FILE:fileadmin/templates/plugins/tesseract/news/list_of_news.html
+                                                                                       
+]]>
+			</label>
+			<label index="tx_phpdisplay_displays.text">Texte</label>
+			<label index="tx_phpdisplay_displays.richtext">Texte riche (HTML)</label>
+			<label index="tx_phpdisplay_displays.image">Image</label>
+			<label index="tx_phpdisplay_displays.image_resource">Image Ressource</label>
+			<label index="tx_phpdisplay_displays.link_to_detail">URL vers detail</label>
+			<label index="tx_phpdisplay_displays.link_to_page">URL vers page</label>
+			<label index="tx_phpdisplay_displays.link_to_file">URL vers fichier</label>
+			<label index="tx_phpdisplay_displays.user">Fonction utilisateur</label>
+			<label index="tx_phpdisplay_displays.debug">Deboguer (l'extension devlog doit être installé)</label>
+			<label index="tx_phpdisplay_displays.debug_markers">Deboguer les tags</label>
+			<label index="tx_phpdisplay_displays.debug_template_structure">Deboguer la structure de modèles</label>
+			<label index="tx_phpdisplay_displays.debug_data_structure">Deboguer la structure de données</label>
+			<label index="tx_phpdisplay_displays.email">Email</label>
+			<label index="tx_phpdisplay_displays.showJson">Afficher JSON</label>
+			<label index="tx_phpdisplay_displays.editJson">Editer JSON</label>
+			<label index="tx_phpdisplay_displays.editHtml">HTML</label>
+			<label index="tx_phpdisplay_displays.fields">Champs</label>
+			<label index="tx_phpdisplay_displays.types">Types</label>
+			<label index="tx_phpdisplay_displays.configuration">Configuration Typoscript</label>
+			<label index="tx_phpdisplay_displays.insertDefaultConfiguration">Insérer une valeur par défaut</label>
+			<label index="tx_phpdisplay_displays.saveFieldConfiguration">Sauvegarder la configuration</label>
+			<label index="tx_phpdisplay_displays.pagebrowser">Configuration du Page Browser</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_tpl">Modèle HTML</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_showmore">Voir plus de pages</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_showless">Voir moins de pages</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_pagesbefore">nbr pages suivantes</label>
+			<label index="tx_phpdisplay_displays.pagebrowser_pagesafter">nbr pages précédentes</label>
+			<label index="tx_phpdisplay_displays.fileNotFound">Fichier non trouvé:</label>
+			<label index="tx_phpdisplay_displays.imported">importé</label>
+		</languageKey>
+	</data>
+</T3locallang>
