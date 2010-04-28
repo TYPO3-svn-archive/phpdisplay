@@ -2,7 +2,7 @@
 //Source : http://www.massassi.com/php/articles/template_engines/
 //possible improvement with SMARTY integration : http://www.kirkbrown.com/tutorials/php-template-system/
 
-class tx_plainphptemplate {
+class tx_phptemplate {
 	private $vars = array(); /// Holds all the template variables
 
 	/**
@@ -44,7 +44,7 @@ class tx_plainphptemplate {
  * An extension to Template that provides automatic caching of
  * template contents.
  */
-class tx_plainphpcachedtemplate extends tx_plainphptemplate{
+class tx_phpcachedtemplate extends tx_phptemplate{
 	public $cache_id;
 	public $expire;
 	public $cached;

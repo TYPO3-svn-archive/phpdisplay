@@ -24,7 +24,7 @@
 ***************************************************************/
 
 require_once(t3lib_extMgm::extPath('tesseract', 'services/class.tx_tesseract_feconsumerbase.php'));
-require_once(t3lib_extMgm::extPath('phpdisplay', 'class.tx_plainphptemplate.php'));
+require_once(t3lib_extMgm::extPath('phpdisplay', 'class.tx_phptemplate.php'));
 
 /**
  * Plugin 'Data Displayer' for the 'phpdisplay' extension.
@@ -198,7 +198,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		// Loads the template file
 		$templateFile = $this->consumerData['template'];
 		if (is_file($templateFile)) {
-			$template = t3lib_div::makeInstance('tx_plainphptemplate');
+			$template = t3lib_div::makeInstance('tx_phptemplate');
 			$template->set('datastructure',$this->getDataStructure());
 
 			$this->result = $template->fetch($templateFile);
