@@ -39,7 +39,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:11:{s:9:"ChangeLog";s:4:"8077";s:10:"README.txt";s:4:"ee2d";s:12:"ext_icon.gif";s:4:"1bdc";s:17:"ext_localconf.php";s:4:"d43a";s:14:"ext_tables.php";s:4:"4be3";s:14:"ext_tables.sql";s:4:"14fc";s:36:"icon_tx_phpdisplay_displays.gif";s:4:"475a";s:16:"locallang_db.xml";s:4:"b5c6";s:7:"tca.php";s:4:"ebc7";s:19:"doc/wizard_form.dat";s:4:"b285";s:20:"doc/wizard_form.html";s:4:"25bc";}',
+	'_md5_values_when_last_written' => 'a:11:{s:9:"ChangeLog";s:4:"8077";s:10:"README.txt";s:4:"ee2d";s:12:"ext_icon.gif";s:4:"1bdc";s:17:"ext_localconf.php";s:4:"d43a";s:14:"ext_tables.php";s:4:"4be3";s:14:"ext_tables.sql";s:4:"14fc";s:36:"icon_tx_phpdisplay_displays.gif";s:4:"475a";s:16:"Resources/Private/Language/locallang_db.xml";s:4:"b5c6";s:7:"tca.php";s:4:"ebc7";s:19:"doc/wizard_form.dat";s:4:"b285";s:20:"doc/wizard_form.html";s:4:"25bc";}',
 );
 
 ?>
