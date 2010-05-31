@@ -18,7 +18,7 @@ $TCA['tx_phpdisplay_displays'] = array(
 		),
 		'title' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.title',
+			'label' => 'LLL:EXT:phpdisplay/Resources/Private/Language/locallang_db.xml:tx_phpdisplay_displays.title',
 			'config' => array(
 				'type' => 'input',
 				'size' => '30',
@@ -27,7 +27,7 @@ $TCA['tx_phpdisplay_displays'] = array(
 		),
 		'description' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.description',
+			'label' => 'LLL:EXT:phpdisplay/Resources/Private/Language/locallang_db.xml:tx_phpdisplay_displays.description',
 			'config' => array(
 				'type' => 'text',
 				'cols' => '40',
@@ -36,7 +36,7 @@ $TCA['tx_phpdisplay_displays'] = array(
 		),
 		'template' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.template',
+			'label' => 'LLL:EXT:phpdisplay/Resources/Private/Language/locallang_db.xml:tx_phpdisplay_displays.template',
 			'config' => array(
 				'type' => 'input',
 				'default' => 'fileadmin/templates/plugins/tesseract/list_of_news.php',
@@ -54,7 +54,7 @@ $TCA['tx_phpdisplay_displays'] = array(
 	)
 );
 
-t3lib_extMgm::addToAllTCAtypes("tx_phpdisplay_displays","--palette--;LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.debug;10","","after:description");
-t3lib_extMgm::addToAllTCAtypes("tx_phpdisplay_displays","--palette--;LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.pagebrowser;20","","after:description");
+t3lib_extMgm::addToAllTCAtypes("tx_phpdisplay_displays","--palette--;LLL:EXT:phpdisplay/Resources/Private/Language/locallang_db.xml:tx_phpdisplay_displays.debug;10","","after:description");
+t3lib_extMgm::addToAllTCAtypes("tx_phpdisplay_displays","--palette--;LLL:EXT:phpdisplay/Resources/Private/Language/locallang_db.xml:tx_phpdisplay_displays.pagebrowser;20","","after:description");
 
 ?>
