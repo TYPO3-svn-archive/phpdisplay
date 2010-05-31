@@ -187,183 +187,25 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 			$template = t3lib_div::makeInstance('tx_phptemplate');
 			$template->set('datastructure',$this->getDataStructure());
 
+			// Hook that enables to post process the output)
+			if (preg_match_all('/#{3}HOOK\.(.+)#{3}/isU', $this->result, $matches, PREG_SET_ORDER)) {
+				foreach ($matches as $match) {
+					$hookName = $match[1];
+					if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['postProcessResult'][$hookName])) {
+						foreach($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['postProcessResult'][$hookName] as $className) {
+							$postProcessor = &t3lib_div::getUserObj($className);
+							$this->result = $postProcessor->postProcessResult($this->result, $hookName, $this);
+						}
+					}
+				}
+			}
+			
 			$this->result = $template->fetch($templateFile);
 		}
 		else {
 			$this->result .= '<div style="color :red; font-weight: bold">Template not found at ' . $templateCode . '.</div>';
 		}
 
-//		// ****************************************
-//		// ********** FETCHES DATASOURCE **********
-//		// ****************************************
-//
-//		// Transforms the string from field mappings into a PHP array.
-//		// This array contains the mapping information btw a marker and a field.
-//		try {
-//			$datasource = json_decode($this->consumerData['mappings'],true);
-//
-//			// Makes sure $datasource is an array
-//			if ($datasource === NULL) {
-//				$datasource = array();
-//			}
-//		}
-//		catch (Exception $e) {
-//			$this->result .= '<div style="color :red; font-weight: bold">JSON decoding problem for tx_phpdisplay_displays.uid = '.$this->uid . '.</div>';
-//			return false;
-//		}
-//
-//		$uniqueMarkers = array();
-//
-//		// Formats TypoScript configuration as array.
-//		$parseObj = t3lib_div::makeInstance('t3lib_TSparser');
-//		foreach ($datasource as $data) {
-//			if(trim($data['configuration']) != ''){
-//
-//				// Clears the setup (to avoid typoscript incrementation)
-//				$parseObj->setup = array();
-//				$parseObj->parse($data['configuration']);
-//				$data['configuration'] = $parseObj->setup;
-//			}
-//			else{
-//				$data['configuration'] = array();
-//			}
-//
-//			// Merges some data to create a new marker. Will look like: table.field
-//			$_marker = $data['table'] . '.' . $data['field'];
-//
-//			// IMPORTANT NOTICE:
-//			// The idea is to make the field unique and to be able to know which field of the database is associated
-//			// Adds to ###FIELD.xxx### the value "table.field"
-//			// Ex: [###FIELD.title###] => ###FIELD.title.pages.title###
-//			$uniqueMarkers['###' . $data['marker'] . '###'] = '###' . $data['marker'] . '.' . $_marker . '###';
-//
-//			// Builds the datasource as an associative array.
-//			// $data contains the following information: [marker], [table], [field], [type], [configuration]
-//			if (preg_match('/FIELD/', $data['marker'])) {
-//				$this->datasourceFields[$data['marker']] = $data;
-//			}
-//			else {
-//				$this->datasourceObjects[$data['marker']] = $data;
-//			}
-//		}
-//
-//		// ***************************************
-//		// ********** BEGINS PROCESSING **********
-//		// ***************************************
-//
-//		// LOCAL DOCUMENTATION:
-//		// $templateCode -> HTML template roughly extracted from the database
-//		// $templateContent -> HTML that is going to be outputed
-//
-//		// Loads the template file
-//		$templateCode = $this->consumerData['template'];
-//		if (preg_match('/^FILE:/isU', $templateCode)) {
-//			$filePath = str_replace('FILE:', '' , $templateCode);
-//			$filePath = t3lib_div::getFileAbsFileName($filePath);
-//			if (is_file($filePath)) {
-//				$templateCode = file_get_contents($filePath);
-//			}
-//		}
-//
-//		// Hook that enables to pre process the output)
-//		if (preg_match_all('/#{3}HOOK\.(.+)#{3}/isU', $templateCode, $matches, PREG_SET_ORDER)) {
-//			foreach ($matches as $match) {
-//				$hookName = $match[1];
-//				if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['preProcessResult'][$hookName])) {
-//					foreach($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['preProcessResult'][$hookName] as $className) {
-//						$preProcessor = &t3lib_div::getUserObj($className);
-//						$templateCode = $preProcessor->preProcessResult($templateCode, $hookName, $this);
-//					}
-//				}
-//			}
-//		}
-//
-//		// Begins $templateCode transformation.
-//		// *Must* be at the beginning of startProcess()
-//		$templateCode = $this->checkPageStatus($templateCode);
-//		$templateCode = $this->preProcessIF($templateCode);
-//		$templateCode = $this->processOBJECTS($templateCode);
-//		$templateCode = $this->preProcessFUNCTIONS($templateCode);
-//		$templateCode = $this->processLOOP($templateCode); // Adds a LOOP marker of first level, if it does not exist.
-//
-//		// Handles possible marker: ###LLL:EXT:myextension/localang.xml:myLable###, ###GP:###, ###TSFE:### etc...
-//		$LLLMarkers = $this->getLLLMarkers($templateCode);
-//		$expressionMarkers = $this->getAllExpressionMarkers($templateCode);
-//		$GPMarkers = $this->getExpressionMarkers('GP', array_merge(t3lib_div::_GET(), t3lib_div::_POST()), $templateCode);
-//		$TSFEMarkers = $this->getExpressionMarkers('TSFE', $GLOBALS['TSFE'], $templateCode);
-//		$PLUGINMarkers = $this->getExpressionMarkers('PLUGIN', $GLOBALS['TSFE']->tmpl->setup['plugin.'], $templateCode);
-//		$VARSMarkers = $this->getExpressionMarkers('VARS', $this->pObj->piVars, $templateCode);
-//		$pageMarkers = $this->getExpressionMarkers('page', $GLOBALS['TSFE']->page, $templateCode);
-//		$sortMarkers = $this->getSortMarkers($templateCode);
-//		$filterMarkers = $this->getFilterMarkers($templateCode);
-//		$globalVariablesMarkers = $this->getGlobalVariablesMarkers($templateCode); // Global template variable can be ###TOTAL_RECORDS### ###SUBTOTAL_RECORDS###
-//
-//		// Merges array, in order to have only one array (performance!)
-//		$markers = array_merge($uniqueMarkers, $LLLMarkers, $expressionMarkers, $GPMarkers, $TSFEMarkers, $PLUGINMarkers, $VARSMarkers, $pageMarkers, $sortMarkers, $filterMarkers, $globalVariablesMarkers);
-//
-//		// Parse evaluation. typically for {config:language} syntax
-//		foreach ($markers as &$marker) {
-//			$marker = tx_expressions_parser::evaluateString($marker);
-//		}
-//
-//		// First transformation of $templateCode. Substitutes $markers that can be already substituted. (LLL, GP, TSFE, etc...)
-//		$templateCode = t3lib_parsehtml::substituteMarkerArray($templateCode, $markers);
-//
-//		// Cuts out the template into different part and organizes it in an array.
-//		$templateStructure = $this->getTemplateStructure($templateCode);
-//
-//		/* Debug */
-//		$this->debug($markers,$templateStructure);
-//
-//		// Transforms the HTML template to HTML content
-//		$templateContent = $templateCode;
-//		foreach ($templateStructure as &$_templateStructure) {
-//			if (!empty($this->structure['records'])) {
-//				$_content = $this->getContent($_templateStructure, $this->structure);
-//				$templateContent = str_replace($_templateStructure['template'], $_content, $templateContent);
-//			}
-//			else {
-//				// Checks if an empty value must replace the block.
-//				$_content = $this->getEmptyValue($_templateStructure);
-//				$templateContent = str_replace($_templateStructure['template'], $_content, $templateContent);
-//			}
-//		}
-//
-//		// Useful when the data structure is empty (no records)
-//		if (!$this->getLabelMarkers($this->structure['name'])) {
-//			$this->setLabelMarkers($this->structure);
-//		}
-//		// Translates outter labels and fields.
-//		$fieldMarkers = array_merge($this->fieldMarkers, $this->getLabelMarkers($this->structure['name']), array('###COUNTER###' => '0'));
-//		$templateContent = t3lib_parsehtml::substituteMarkerArray($templateContent, $fieldMarkers);
-//
-//		// Handles the page browser
-//		$templateContent = $this->processPageBrowser($templateContent);
-//
-//		// Handles the <!--IF(###MARKER### == '')-->
-//		// Evaluates the condition and replaces the content whether it is necessary
-//		// Must be at the end of startProcess()
-//		$templateContent = $this->postProcessFUNCTIONS($templateContent);
-//		$this->result = $this->postProcessIF($templateContent);
-//
-//		// Hook that enables to post process the output)
-//		if (preg_match_all('/#{3}HOOK\.(.+)#{3}/isU', $this->result, $matches, PREG_SET_ORDER)) {
-//			foreach ($matches as $match) {
-//				$hookName = $match[1];
-//				if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['postProcessResult'][$hookName])) {
-//					foreach($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['postProcessResult'][$hookName] as $className) {
-//						$postProcessor = &t3lib_div::getUserObj($className);
-//						$this->result = $postProcessor->postProcessResult($this->result, $hookName, $this);
-//					}
-//				}
-//			}
-//		}
-//
-//		// Processes markers of type ###RECORD(tt_content,1)###
-//		$this->result = $this->processRECORDS($this->result);
-//
-//		// add debug[display] in order to see the untranslated markers
-//		$this->result = $this->clearMarkers($this->result);
 	}
 
 	/**
