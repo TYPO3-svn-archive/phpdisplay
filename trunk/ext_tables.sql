@@ -12,7 +12,6 @@ CREATE TABLE tx_phpdisplay_displays (
 	title varchar(255) DEFAULT '' NOT NULL,
 	description text,
 	template text,
-	mappings mediumtext,
 	
 	PRIMARY KEY (uid),
 	KEY parent (pid)

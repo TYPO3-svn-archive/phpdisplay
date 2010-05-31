@@ -6,7 +6,7 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="tx_phpdisplay_displays">Template-based Display</label>
+			<label index="tx_phpdisplay_displays">PHP based Display</label>
 			<label index="tx_phpdisplay_displays.title">Title</label>
 			<label index="tx_phpdisplay_displays.description">Description</label>
 			<label index="tx_phpdisplay_displays.mappings">Mappings</label>

@@ -4,7 +4,7 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 $TCA['tx_phpdisplay_displays'] = array(
 	'ctrl' => $TCA['tx_phpdisplay_displays']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'hidden,title,description,mappings'
+		'showRecordFieldList' => 'hidden,title,description'
 	),
 	'feInterface' => $TCA['tx_phpdisplay_displays']['feInterface'],
 	'columns' => array(
