@@ -11,16 +11,7 @@
 			<label index="tx_phpdisplay_displays.description">Description</label>
 			<label index="tx_phpdisplay_displays.mappings">Mappings</label>
 			<label index="tx_phpdisplay_displays.template">Template path</label>
-			<label index="tx_phpdisplay_displays.noTemplateFoundError"><![CDATA[
-Change this content by clicking on tab "HTML". 
-
-Then, you can:
-
-- insert inline HTML
-- load a file, FILE:fileadmin/templates/plugins/tesseract/news/list_of_news.html
-                                                                               
-]]>
-			</label>
+			<!--
 			<label index="tx_phpdisplay_displays.text">Text</label>
 			<label index="tx_phpdisplay_displays.richtext">Rich text (HTML)</label>
 			<label index="tx_phpdisplay_displays.image">Image</label>
@@ -51,6 +42,7 @@ Then, you can:
 			<label index="tx_phpdisplay_displays.pagebrowser_pagesafter"># pages after</label>
 			<label index="tx_phpdisplay_displays.fileNotFound">File not found at</label>
 			<label index="tx_phpdisplay_displays.imported">imported</label>
+			-->
 		</languageKey>
 		<languageKey index="fr" type="array">
 			<label index="tx_phpdisplay_displays">Afficheur de données (modèle HTML)</label>
@@ -58,14 +50,7 @@ Then, you can:
 			<label index="tx_phpdisplay_displays.description">Description</label>
 			<label index="tx_phpdisplay_displays.mappings">Corrélations</label>
 			<label index="tx_phpdisplay_displays.template">Modèle HTML</label>
-			<label index="tx_phpdisplay_displays.noTemplateFoundError"><![CDATA[
-Pour changer ce contenu, cliquez sur l'onglet "HTML".
-
-- Insérer du contenu HTML inline
-- Charger un fichier avec FILE:fileadmin/templates/plugins/tesseract/news/list_of_news.html
-                                                                                       
-]]>
-			</label>
+			<!--
 			<label index="tx_phpdisplay_displays.text">Texte</label>
 			<label index="tx_phpdisplay_displays.richtext">Texte riche (HTML)</label>
 			<label index="tx_phpdisplay_displays.image">Image</label>
@@ -95,6 +80,7 @@ Pour changer ce contenu, cliquez sur l'onglet "HTML".
 			<label index="tx_phpdisplay_displays.pagebrowser_pagesafter">nbr pages précédentes</label>
 			<label index="tx_phpdisplay_displays.fileNotFound">Fichier non trouvé:</label>
 			<label index="tx_phpdisplay_displays.imported">importé</label>
+			-->
 		</languageKey>
 	</data>
 </T3locallang>

@@ -6,11 +6,6 @@ t3lib_extMgm::addUserTSConfig('
 	options.saveDocNew.tx_phpdisplay_displays=1
 ');
 
-// Register method with generic BE ajax calls handler
-// (as from TYPO3 4.2)
-
-$TYPO3_CONF_VARS['BE']['AJAX']['phpdisplay::saveConfiguration'] = 'typo3conf/ext/phpdisplay/class.tx_temlatedisplay_ajax.php:tx_phpdisplay_ajax->saveConfiguration';
-$TYPO3_CONF_VARS['BE']['AJAX']['phpdisplay::saveTemplate'] = 'typo3conf/ext/phpdisplay/class.tx_temlatedisplay_ajax.php:tx_phpdisplay_ajax->saveTemplate';
 /*
  * Hook for loading Javascript and CSS in the backend
  */
