@@ -858,17 +858,6 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 //			t3lib_div::devLog('Data structure: "' . $this->pObj->cObj->data['header'] . '"', $this->extKey, -1, $this->structure);
 //		}
 //
-//		if ($this->consumerData['debug_markers'] && !$this->configuration['debug']) {
-//			t3lib_div::devLog('Markers: "' . $this->consumerData['title'] . '"', $this->extKey, -1, $markers);
-//		}
-//
-//		if ($this->consumerData['debug_template_structure'] && !$this->configuration['debug']) {
-//			t3lib_div::devLog('Template structure: "' . $this->consumerData['title'] . '"', $this->extKey, -1, $templateStructure);
-//		}
-//
-//		if ($this->consumerData['debug_data_structure'] && !$this->configuration['debug']) {
-//			t3lib_div::devLog('Data structure: "' . $this->pObj->cObj->data['header'] . '"', $this->extKey, -1, $this->structure);
-//		}
 //	}
 }
 

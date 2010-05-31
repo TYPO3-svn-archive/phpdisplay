@@ -16,39 +16,6 @@ $TCA['tx_phpdisplay_displays'] = array(
 				'default' => '0'
 			)
 		),
-		'debug_markers' => array(
-			'exclude' => 1,
-			#'label' => 'LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.debug',
-			'config'  => array(
-				'type'    => 'check',
-				'default' => '0',
-				'items' => array(
-					array('LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.debug_markers', ''),
-				),
-			)
-		),
-		'debug_template_structure' => array(
-			'exclude' => 1,
-			#'label' => 'LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.debug_data_template',
-			'config'  => array(
-				'type'    => 'check',
-				'default' => '0',
-				'items' => array(
-					array('LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.debug_template_structure', ''),
-				),
-			)
-		),
-		'debug_data_structure' => array(
-			'exclude' => 1,
-			#'label' => 'LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.debug_data_structure',
-			'config'  => array(
-				'type'    => 'check',
-				'default' => '0',
-				'items' => array(
-					array('LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.debug_data_structure', ''),
-				),
-			)
-		),
 		'title' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.title',
@@ -75,7 +42,8 @@ $TCA['tx_phpdisplay_displays'] = array(
 				'default' => 'fileadmin/templates/plugins/tesseract/list_of_news.php',
 				'size' => '30',
 				'eval' => 'trim',
-			)
+				'default' => 'FILE:typo3conf/ext/phpdisplay/samples/dummy.php'
+ 			)
 		),
 	),
 	'types' => array(
@@ -89,12 +57,4 @@ $TCA['tx_phpdisplay_displays'] = array(
 t3lib_extMgm::addToAllTCAtypes("tx_phpdisplay_displays","--palette--;LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.debug;10","","after:description");
 t3lib_extMgm::addToAllTCAtypes("tx_phpdisplay_displays","--palette--;LLL:EXT:phpdisplay/locallang_db.xml:tx_phpdisplay_displays.pagebrowser;20","","after:description");
 
-$TCA['tx_phpdisplay_displays']['palettes']['10'] = array(
-	"showitem" => "debug_markers, debug_template_structure, debug_data_structure",
-	"canNotCollapse" => 1
-);
-$TCA['tx_phpdisplay_displays']['palettes']['20'] = array(
-	"showitem" => "pagebrowser_tpl, pagebrowser_pagesbefore, pagebrowser_pagesafter, pagebrowser_showmore, pagebrowser_showless",
-	"canNotCollapse" => 1
-);
 ?>
