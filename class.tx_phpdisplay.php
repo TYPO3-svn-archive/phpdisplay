@@ -178,7 +178,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		$this->localCObj = t3lib_div::makeInstance('tslib_cObj');
 		$this->configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
 
-		$this->setPageTitle($this->conf);
+		#$this->setPageTitle($this->conf);
 
 
 		// Loads the template file
