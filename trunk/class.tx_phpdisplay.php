@@ -170,16 +170,12 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 	 */
 	public function startProcess() {
 
-		// ************************************
-		// ********** INITIALISATION **********
-		// ************************************
-
+		if (isset($GLOBALS['_GET']['debug']['structure']) && isset($GLOBALS['TYPO3_MISC']['microtime_BE_USER_start'])) {
+			t3lib_div::debug($this->structure);
+		}
 		// Initializes local cObj
 		$this->localCObj = t3lib_div::makeInstance('tslib_cObj');
 		$this->configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
-
-		#$this->setPageTitle($this->conf);
-
 
 		// Loads the template file
 		$templateFile = $this->consumerData['template'];
@@ -188,7 +184,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 			$template->set('datastructure',$this->getDataStructure());
 
 			// Hook that enables to post process the output)
-			if (preg_match_all('/#{3}HOOK\.(.+)#{3}/isU', $this->result, $matches, PREG_SET_ORDER)) {
+				if (preg_match_all('/#{3}HOOK\.(.+)#{3}/isU', $this->result, $matches, PREG_SET_ORDER)) {
 				foreach ($matches as $match) {
 					$hookName = $match[1];
 					if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['postProcessResult'][$hookName])) {
@@ -205,7 +201,6 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		else {
 			$this->result .= '<div style="color :red; font-weight: bold">Template not found at ' . $templateCode . '.</div>';
 		}
-
 	}
 
 	/**
@@ -475,16 +470,16 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 	 * @param	int		$limit: the limit of words
 	 * @return	string	$text that has been shorten
 	 */
-	protected function limit($text, $limit) {
-		$text = strip_tags($text, '<br><br/><br />');
-		$limit = $limit + substr_count($text, '<br>') + substr_count($text, '<br/>') + substr_count($text, '<br />');
-		$words = str_word_count($text, 2);
-		$pos = array_keys($words);
-		if (count($words) > $limit) {
-			$text = substr($text, 0, $pos[$limit]) . ' ...';
-		}
-		return $text;
-	}
+//	protected function limit($text, $limit) {
+//		$text = strip_tags($text, '<br><br/><br />');
+//		$limit = $limit + substr_count($text, '<br>') + substr_count($text, '<br/>') + substr_count($text, '<br />');
+//		$words = str_word_count($text, 2);
+//		$pos = array_keys($words);
+//		if (count($words) > $limit) {
+//			$text = substr($text, 0, $pos[$limit]) . ' ...';
+//		}
+//		return $text;
+//	}
 
 
 	/**
@@ -493,14 +488,14 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 	 * @param	string	$content HTML code
 	 * @return	string	$content transformed HTML code
 	 */
-	protected function processOBJECTS($content) {
-		$fieldMarkers = array();
-		foreach ($this->datasourceObjects as $key => $datasource) {
-			$fieldMarkers['###' . $key . '###'] = $this->getValue($datasource);
-		}
-
-		return t3lib_parsehtml::substituteMarkerArray($content, $fieldMarkers);
-	}
+//	protected function processOBJECTS($content) {
+//		$fieldMarkers = array();
+//		foreach ($this->datasourceObjects as $key => $datasource) {
+//			$fieldMarkers['###' . $key . '###'] = $this->getValue($datasource);
+//		}
+//
+//		return t3lib_parsehtml::substituteMarkerArray($content, $fieldMarkers);
+//	}
 
 	/**
 	 * Important method! Formats the $value given as input according to the $key.
@@ -671,36 +666,6 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 //		return $markers;
 //	}
 
-	/**
-	 * Displays in the frontend or in the devlog some debug output
-	 *
-	 * @param array $markers
-	 * @param array $templateStructure
-	 */
-//	protected function debug($markers, $templateStructure = array()) {
-//		if (isset($GLOBALS['_GET']['debug']['markers']) && isset($GLOBALS['TYPO3_MISC']['microtime_BE_USER_start'])) {
-//			t3lib_div::debug($markers);
-//		}
-//
-//		if (isset($GLOBALS['_GET']['debug']['template']) && isset($GLOBALS['TYPO3_MISC']['microtime_BE_USER_start'])) {
-//			t3lib_div::debug($templateStructure);
-//		}
-//
-//		if (isset($GLOBALS['_GET']['debug']['structure']) && isset($GLOBALS['TYPO3_MISC']['microtime_BE_USER_start'])) {
-//			t3lib_div::debug($this->structure);
-//		}
-//
-//		if (isset($GLOBALS['_GET']['debug']['filter']) && isset($GLOBALS['TYPO3_MISC']['microtime_BE_USER_start'])) {
-//			t3lib_div::debug($this->filter);
-//		}
-//
-//		if ($this->configuration['debug'] || TYPO3_DLOG) {
-//			t3lib_div::devLog('Markers: "' . $this->consumerData['title'] . '"', $this->extKey, -1, $markers);
-//			t3lib_div::devLog('Template structure: "' . $this->consumerData['title'] . '"', $this->extKey, -1, $templateStructure);
-//			t3lib_div::devLog('Data structure: "' . $this->pObj->cObj->data['header'] . '"', $this->extKey, -1, $this->structure);
-//		}
-//
-//	}
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/phpdisplay/class.tx_phpdisplay.php']){
