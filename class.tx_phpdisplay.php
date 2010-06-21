@@ -122,7 +122,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 	 * @return	void
 	 */
 	public function setDataStructure($structure) {
-		$this->structure = $structure;
+		$this->structure[$structure['name']] = $structure;
 	}
 
 	/**
@@ -184,7 +184,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 			$template->set('datastructure',$this->getDataStructure());
 
 			// Hook that enables to post process the output)
-				if (preg_match_all('/#{3}HOOK\.(.+)#{3}/isU', $this->result, $matches, PREG_SET_ORDER)) {
+			if (preg_match_all('/#{3}HOOK\.(.+)#{3}/isU', $this->result, $matches, PREG_SET_ORDER)) {
 				foreach ($matches as $match) {
 					$hookName = $match[1];
 					if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['postProcessResult'][$hookName])) {
