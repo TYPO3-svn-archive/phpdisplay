@@ -179,6 +179,12 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 
 		// Loads the template file
 		$templateFile = $this->consumerData['template'];
+		
+		if (preg_match('/^FILE:/isU', $templateFile)) {
+			$filePath = str_replace('FILE:', '' , $templateFile);
+			$templateFile = t3lib_div::getFileAbsFileName($filePath);
+		}
+		
 		if (is_file($templateFile)) {
 			$template = t3lib_div::makeInstance('tx_phptemplate');
 			$template->set('datastructure',$this->getDataStructure());
@@ -199,7 +205,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 			$this->result = $template->fetch($templateFile);
 		}
 		else {
-			$this->result .= '<div style="color :red; font-weight: bold">Template not found at ' . $templateCode . '.</div>';
+			$this->result .= '<div style="color :red; font-weight: bold">Template not found at ' . $templateFile . '.</div>';
 		}
 	}
 
