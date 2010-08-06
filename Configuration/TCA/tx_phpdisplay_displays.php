@@ -42,7 +42,7 @@ $TCA['tx_phpdisplay_displays'] = array(
 				'default' => 'fileadmin/templates/plugins/tesseract/list_of_news.php',
 				'size' => '30',
 				'eval' => 'trim',
-				'default' => 'FILE:typo3conf/ext/phpdisplay/samples/dummy.php'
+				'default' => 'typo3conf/ext/phpdisplay/samples/dummy.php'
  			)
 		),
 	),
