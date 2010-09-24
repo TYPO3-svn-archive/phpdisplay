@@ -23,9 +23,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-require_once(t3lib_extMgm::extPath('tesseract', 'services/class.tx_tesseract_feconsumerbase.php'));
-require_once(t3lib_extMgm::extPath('phpdisplay', 'class.tx_phptemplate.php'));
-
 /**
  * Plugin 'Data Displayer' for the 'phpdisplay' extension.
  *
@@ -186,8 +183,8 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		}
 		
 		if (is_file($templateFile)) {
-			$template = t3lib_div::makeInstance('tx_phptemplate');
-			$template->set('datastructure',$this->getDataStructure());			
+			$template = t3lib_div::makeInstance('tx_phpdisplay_template');
+			$template->set('datastructure',$this->getDataStructure());
 			$this->result = $template->fetch($templateFile);
 		}
 		else {
