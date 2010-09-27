@@ -184,6 +184,8 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		
 		if (is_file($templateFile)) {
 			$template = t3lib_div::makeInstance('tx_phpdisplay_template');
+			$template->set('controller',$this->getController());
+			$template->set('filter',$this->getFilter());
 			$template->set('datastructure',$this->getDataStructure());
 			$this->result = $template->fetch($templateFile);
 		}
