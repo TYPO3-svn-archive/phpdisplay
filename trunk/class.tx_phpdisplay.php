@@ -184,13 +184,29 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		
 		if (is_file($templateFile)) {
 			$template = t3lib_div::makeInstance('tx_phpdisplay_template');
-			$template->set('controller',$this->getController());
-			$template->set('filter',$this->getFilter());
-			$template->set('datastructure',$this->getDataStructure());
+			$template->set('controller', $this->getController());
+			$template->set('filter', $this->getFilter());
+			$template->set('datastructure', $this->getDataStructure());
 			$this->result = $template->fetch($templateFile);
 		}
 		else {
 			$this->result .= '<div style="color :red; font-weight: bold">Template not found at ' . $templateFile . '.</div>';
+		}
+	}
+
+	/**
+	 * Displays in the frontend or in the devlog some debug output
+	 *
+	 * @return void
+	 */
+	protected function debug() {
+
+		if (isset($GLOBALS['_GET']['debug']['structure']) && $GLOBALS['TSFE']->beUserLogin) {
+			t3lib_div::debug($this->getDataStructure());
+		}
+
+		if (isset($GLOBALS['_GET']['debug']['filter']) && $GLOBALS['TSFE']->beUserLogin) {
+			t3lib_div::debug($this->getFilter());
 		}
 	}
 
