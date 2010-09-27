@@ -42,7 +42,17 @@ $TCA['tx_phpdisplay_displays'] = array(
 				'default' => 'fileadmin/templates/plugins/tesseract/list_of_news.php',
 				'size' => '30',
 				'eval' => 'trim',
-				'default' => 'FILE:EXT:phpdisplay/samples/dummy.php'
+				'default' => 'FILE:EXT:phpdisplay/samples/dummy.php',
+				'wizards' => Array(
+					'_PADDING' => 2,
+					'link' => Array(
+						'type' => 'popup',
+						'title' => 'Link',
+						'icon' => 'link_popup.gif',
+						'script' => 'browse_links.php?mode=wizard',
+						'JSopenParams' => 'height=600,width=700,status=0,menubar=0,scrollbars=1'
+					)
+				)
  			)
 		),
 	),
