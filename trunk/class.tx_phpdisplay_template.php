@@ -47,7 +47,7 @@ class tx_phpdisplay_template {
 	 * Set a template variable.
 	 */
 	function set($name, $value){
-		$this->vars[$name] = is_object($value) ? $value->fetch() : $value;
+		$this->vars[$name] = $value;
 	}
 
 	/**
