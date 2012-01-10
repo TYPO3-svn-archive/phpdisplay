@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2007-2010	Francois Suter (Cobweb) <typo3@cobweb.ch>
+*  (c) 2008-2012	Francois Suter (Cobweb) <typo3@cobweb.ch>
 *					Fabien Udriot <fabien.udriot@ecodev.ch>
 *  All rights reserved
 *
@@ -73,7 +73,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 	 * @return	array
 	 */
 	public function getController() {
-		return $this->pObj;
+		return $this->controller;
 	}
 
 	/**
@@ -176,12 +176,12 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 
 		// Loads the template file
 		$templateFile = $this->consumerData['template'];
-		
+
 		if (preg_match('/^FILE:/isU', $templateFile)) {
 			$filePath = str_replace('FILE:', '' , $templateFile);
 			$templateFile = t3lib_div::getFileAbsFileName($filePath);
 		}
-		
+
 		if (is_file($templateFile)) {
 			$template = t3lib_div::makeInstance('tx_phpdisplay_template');
 			$template->set('controller', $this->getController());
