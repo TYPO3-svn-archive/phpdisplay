@@ -1,3 +1,7 @@
+2012-06-26 Francois Suter (Cobweb)  <typo3@cobweb.ch>
+
+	* Cleaned up some code, verified compatibility with TYPO3 4.7, raised requirements to TYPO3 4.5, resolves #38395
+
 2012-01-08 Francois Suter (Cobweb)  <typo3@cobweb.ch>
 
 	* Replaced reference to parent object with new, general member variable, resolves #33053

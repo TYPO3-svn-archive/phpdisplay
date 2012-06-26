@@ -39,7 +39,6 @@ $TCA['tx_phpdisplay_displays'] = array(
 			'label' => 'LLL:EXT:phpdisplay/Resources/Private/Language/locallang_db.xml:tx_phpdisplay_displays.template',
 			'config' => array(
 				'type' => 'input',
-				'default' => 'fileadmin/templates/plugins/tesseract/list_of_news.php',
 				'size' => '30',
 				'eval' => 'trim',
 				'default' => 'FILE:EXT:phpdisplay/samples/dummy.php',

@@ -37,7 +37,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 
 	public $tsKey = 'tx_phpdisplay';
 	public $extKey = 'phpdisplay';
-	protected $conf;
+	protected $configuration;
 	protected $table; // Name of the table where the details about the data display are stored
 	protected $uid; // Primary key of the record to fetch for the details
 	protected $structure = array(); // Input standardised data structure
@@ -65,15 +65,6 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		$this->datasourceFields = array();
 		$this->LLkey = 'default';
 		$this->fieldMarkers = array();
-	}
-
-	/**
-	 * Return the controller data.
-	 *
-	 * @return	array
-	 */
-	public function getController() {
-		return $this->controller;
 	}
 
 	/**
@@ -153,7 +144,8 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 	/**
 	 * This method sets the result. Useful for hooks.
 	 *
-	 * @return	void
+	 * @param mixed $result Predefined result
+	 * @return void
 	 */
 	public function setResult($result) {
 
@@ -168,7 +160,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 	public function startProcess() {
 
 		if (isset($GLOBALS['_GET']['debug']['structure']) && isset($GLOBALS['TYPO3_MISC']['microtime_BE_USER_start'])) {
-			t3lib_div::debug($this->structure);
+			t3lib_utility_Debug::debug($this->structure);
 		}
 		// Initializes local cObj
 		$this->localCObj = t3lib_div::makeInstance('tslib_cObj');
@@ -183,6 +175,7 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		}
 
 		if (is_file($templateFile)) {
+				/** @var $template tx_phpdisplay_template */
 			$template = t3lib_div::makeInstance('tx_phpdisplay_template');
 			$template->set('controller', $this->getController());
 			$template->set('filter', $this->getFilter());
@@ -202,11 +195,11 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 	protected function debug() {
 
 		if (isset($GLOBALS['_GET']['debug']['structure']) && $GLOBALS['TSFE']->beUserLogin) {
-			t3lib_div::debug($this->getDataStructure());
+			t3lib_utility_Debug::debug($this->getDataStructure());
 		}
 
 		if (isset($GLOBALS['_GET']['debug']['filter']) && $GLOBALS['TSFE']->beUserLogin) {
-			t3lib_div::debug($this->getFilter());
+			t3lib_utility_Debug::debug($this->getFilter());
 		}
 	}
 

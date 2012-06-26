@@ -54,12 +54,13 @@ class tx_phpdisplay_template {
 	 * Open, parse, and return the template file.
 	 *
 	 * @param $file string the template file name
+	 * @return string The content of the template file
 	 */
 	function fetch($file = null){
 		if(! $file) {
 			$file = $this->file;
 		}
-		
+
 		extract($this->vars); // Extract the vars to local namespace
 		ob_start(); // Start output buffering
 		include ($file); // Include the file
