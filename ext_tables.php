@@ -8,16 +8,17 @@ t3lib_extMgm::allowTableOnStandardPages('tx_phpdisplay_displays');
 	// TCA ctrl for new table
 $TCA['tx_phpdisplay_displays'] = array(
 	'ctrl' => array(
-		'title'     => 'LLL:EXT:phpdisplay/Resources/Private/Language/locallang_db.xml:tx_phpdisplay_displays',		
+		'title'     => 'LLL:EXT:phpdisplay/Resources/Private/Language/locallang_db.xml:tx_phpdisplay_displays',
 		'label'     => 'title',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
 		'default_sortby' => 'ORDER BY title',
-		'delete' => 'deleted',	
+		'delete' => 'deleted',
 		'enablecolumns' => array(
 			'disabled' => 'hidden',
 		),
+		'searchFields' => 'title,description,template',
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY).'Configuration/TCA/tx_phpdisplay_displays.php',
 		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY).'Resources/Public/images/tx_phpdisplay_displays.png',
 	),
