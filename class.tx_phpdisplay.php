@@ -171,8 +171,8 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 
 		if (preg_match('/^FILE:/isU', $templateFile)) {
 			$filePath = str_replace('FILE:', '' , $templateFile);
-			$templateFile = t3lib_div::getFileAbsFileName($filePath);
 		}
+		$templateFile = t3lib_div::getFileAbsFileName($filePath);
 
 		if (is_file($templateFile)) {
 				/** @var $template tx_phpdisplay_template */
@@ -203,6 +203,14 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		}
 	}
 
+	/**
+	 * Returns a reference to the component's controller
+	 *
+	 * @return tx_tesseract_datacontroller_output The controller
+	 */
+	public function getController() {
+		return $this->controller;
+	}
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/phpdisplay/class.tx_phpdisplay.php']){
