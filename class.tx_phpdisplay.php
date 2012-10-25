@@ -170,9 +170,9 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		$templateFile = $this->consumerData['template'];
 
 		if (preg_match('/^FILE:/isU', $templateFile)) {
-			$filePath = str_replace('FILE:', '' , $templateFile);
+			$templateFile = str_replace('FILE:', '' , $templateFile);
 		}
-		$templateFile = t3lib_div::getFileAbsFileName($filePath);
+		$templateFile = t3lib_div::getFileAbsFileName($templateFile);
 
 		if (is_file($templateFile)) {
 				/** @var $template tx_phpdisplay_template */
