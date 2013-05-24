@@ -166,24 +166,25 @@ class tx_phpdisplay extends tx_tesseract_feconsumerbase {
 		$this->localCObj = t3lib_div::makeInstance('tslib_cObj');
 		$this->configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$this->extKey]);
 
-		// Loads the template file
-		$templateFile = $this->consumerData['template'];
 
-		if (preg_match('/^FILE:/isU', $templateFile)) {
-			$templateFile = str_replace('FILE:', '' , $templateFile);
-		}
-		$templateFile = t3lib_div::getFileAbsFileName($templateFile);
+			// Get the full path to the template file
+		try {
+			$filePath = tx_tesseract_utilities::getTemplateFilePath($this->consumerData['template']);
 
-		if (is_file($templateFile)) {
 				/** @var $template tx_phpdisplay_template */
 			$template = t3lib_div::makeInstance('tx_phpdisplay_template');
 			$template->set('controller', $this->getController());
 			$template->set('filter', $this->getFilter());
 			$template->set('datastructure', $this->getDataStructure());
-			$this->result = $template->fetch($templateFile);
+			$this->result = $template->fetch($filePath);
 		}
-		else {
-			$this->result .= '<div style="color :red; font-weight: bold">Template not found at ' . $templateFile . '.</div>';
+		catch (Exception $e) {
+			$this->controller->addMessage(
+				$this->extKey,
+				$e->getMessage() . ' (' . $e->getCode() . ')',
+				'Error processing the view',
+				t3lib_FlashMessage::ERROR
+			);
 		}
 	}
 

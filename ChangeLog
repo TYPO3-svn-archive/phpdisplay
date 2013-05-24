@@ -1,6 +1,7 @@
 2012-05-24 Francois Suter (Cobweb)  <typo3@cobweb.ch>
 
 	* Verified compatibility with TYPO3 6.0 and 6.1, resolves #48489
+	* Added FAL support, resolves #48490
 
 2012-06-29 Francois Suter (Cobweb)  <typo3@cobweb.ch>
 
