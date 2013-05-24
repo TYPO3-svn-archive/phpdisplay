@@ -6,7 +6,7 @@ if (!defined ('TYPO3_MODE')) {
 t3lib_extMgm::allowTableOnStandardPages('tx_phpdisplay_displays');
 
 	// TCA ctrl for new table
-$TCA['tx_phpdisplay_displays'] = array(
+$GLOBALS['TCA']['tx_phpdisplay_displays'] = array(
 	'ctrl' => array(
 		'title'     => 'LLL:EXT:phpdisplay/Resources/Private/Language/locallang_db.xml:tx_phpdisplay_displays',
 		'label'     => 'title',
@@ -37,10 +37,10 @@ $addTemplateDisplayWizard = array(
 								'setValue' => 'set'
 							)
 						);
-$TCA['tt_content']['columns']['tx_displaycontroller_consumer']['config']['wizards']['add_phpdisplay'] = $addTemplateDisplayWizard;
+$GLOBALS['TCA']['tt_content']['columns']['tx_displaycontroller_consumer']['config']['wizards']['add_phpdisplay'] = $addTemplateDisplayWizard;
 
 
 	// Register phpdisplay with the Display Controller as a Data Consumer
 t3lib_div::loadTCA('tt_content');
-$TCA['tt_content']['columns']['tx_displaycontroller_consumer']['config']['allowed'] .= ',tx_phpdisplay_displays';
+$GLOBALS['TCA']['tt_content']['columns']['tx_displaycontroller_consumer']['config']['allowed'] .= ',tx_phpdisplay_displays';
 ?>
